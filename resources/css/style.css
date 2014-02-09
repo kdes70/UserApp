@@ -1,0 +1,97 @@
+@charset "utf-8"; /* CSS Document */
+body,html{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+canvas {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    z-index: 0;
+    left:-10%;
+    top: -10%;
+}
+#app {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    z-index: 10;
+}
+.icon-add {
+    background: url(../images/icons/add.png);
+}
+.icon-delete {
+    background: url(../images/icons/close.png);
+}
+.icon-sync {
+    background: url(../images/icons/sync.png);
+}
+.icon-store {
+    background: url(../images/icons/images_store.png);
+}
+.icon-link {
+    background: url(../images/icons/link.gif);
+}
+.DD-hover {
+    background: #FFE08A;
+}
+select {
+    font-size: 11px;
+}
+.image-tip {
+    padding: 4px;
+    height: 98px;
+    white-space: nowrap;
+}
+.image-tip img {
+    margin-right: 10px;
+    border: 2px solid #083772;
+}
+.image-tip b{
+    color: #083772;
+    display: block;
+    margin-bottom: 4px;
+}
+.image-tip span {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.thumb {
+    padding: 3px;
+}
+
+.thumb-wrap {
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}.thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    width: 76px; // for ie to ensure that the text is centered
+}
+.x-item-selected .thumb {
+    background: #8db2e3;
+}
+.multi-proxy .thumb-img{
+    height: 20px;
+    width: 30px;
+    margin:1px;
+}
+.thumb-img{
+    height: 60px;
+    width: 80px;
+}
+.image-node .x-tree-node-icon{
+    margin-bottom:1px;
+    height:15px;
+}
+.x-action-col-cell img {
+    cursor: pointer;
+}

@@ -18,9 +18,8 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "lib",
+    "vendor",
     "test",
-    "extjs",
     "tests"
   ],
   "dependencies": {
