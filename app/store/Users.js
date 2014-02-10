@@ -4,9 +4,13 @@ Ext.define('AppExample.store.Users', {
     autoLoad: true,
     autoSync: true,
     listeners: {
-        load: function(me, records) {
-
-            console.log(me, records);
+        load: function(store) {
+            // load associations data
+            store.each(function(user){
+                typeStore = Ext.getStore('Types');
+                type = typeStore.getById(user.data.type_id);
+                user.setType(type);
+            })
         }
     }
 });

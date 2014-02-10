@@ -39,17 +39,14 @@ Ext.define('AppExample.view.Users', {
                 valueField: 'id',
                 displayField: 'alias',
                 name: 'type',
-                mode: 'local',
                 forceSelection: true,
                 selectOnTab: true,
-
                 typeAhead: true,
                 allowBlank: false,
                 lazyRender: true
             },
             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                console.log(value, metaData, record.getType());
-                return record.getType().alias;
+                return record.getType().data.alias;
             }
         }
     ],
@@ -80,7 +77,6 @@ Ext.define('AppExample.view.Users', {
                     itemId: 'typeSelector',
                     valueField: 'id',
                     displayField: 'alias',
-//                    mode: 'local',
                     forceSelection: false,
                     selectOnTab: true,
                     emptyText: 'select available types or write new',

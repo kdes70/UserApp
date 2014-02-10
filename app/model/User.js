@@ -1,6 +1,7 @@
 Ext.define('AppExample.model.User', {
     extend: 'Ext.data.Model',
     idgen: 'sequential',
+    requires: 'AppExample.model.Type',
     fields: [
         { name: 'id', type: 'int' },
         { name: 'name', type: 'string' },
@@ -18,7 +19,6 @@ Ext.define('AppExample.model.User', {
         model: 'AppExample.model.Type',
         getterName: 'getType',
         setterName: 'setType',
-//        associationKey: 'types',
         foreignKey: 'type_id'
     }],
     proxy: {

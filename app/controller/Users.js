@@ -1,7 +1,6 @@
 Ext.define('AppExample.controller.Users', {
     extend: 'Ext.app.Controller',
     stores: ['Users', 'Types'], // , 'RelatedUsers', 'UnrelatedUsers',  'Images', 'RelatedImages'
-//    models: ['User', 'Type'],
     views: ['Users'], // 'Cfg',  'Friends'
     refs: [{
         ref: 'UserGrid',
@@ -18,15 +17,6 @@ Ext.define('AppExample.controller.Users', {
             'users #deleteUser': {
                 click: this.deleteUser
             },
-//            'users #typeSelector': {
-//                change: this.typeChange
-//            },
-//            'users #addType': {
-//                click: this.addType
-//            },
-//            'users #deleteType': {
-//                click: this.deleteType
-//            },
 //            'cfg button[action=autoSync]': {
 //                toggle: function (btn, pressed) {
 //                    this.getUsersStore().autoSync = pressed;
@@ -58,8 +48,7 @@ Ext.define('AppExample.controller.Users', {
     selected: null,
     selectUser: function (grid, record, index, eOpts){
         this.selected = record;
-        console.log(record);
-        console.log(record.getType());
+
 //        var params = new Object(),
 //            selection = (selected[0] || null);
 //
