@@ -12,7 +12,7 @@ Ext.define('AppExample.model.User', {
         field: 'name',
         min: 3
     }],
-    hasOne: [{
+    belongsTo: [{
         name: 'type',
         instanceName:'type',
         model: 'AppExample.model.Type',
