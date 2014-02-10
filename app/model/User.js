@@ -26,7 +26,3 @@ Ext.define('AppExample.model.User', {
         id: 'users'
     }
 });
-
-//Always set the associationKey, if the foreign object is returned in the same response as this object
-//Always set the foreignKey, if you want to load the foreign object at will
-//Consider changing the instanceName to something shorter

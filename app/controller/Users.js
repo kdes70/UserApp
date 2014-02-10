@@ -82,12 +82,9 @@ Ext.define('AppExample.controller.Users', {
     addUser: function () {
         var user = new AppExample.model.User();
         this.getUsersStore().add(user);
-        console.log(user);
-//        edit.cancelEdit();
-//        edit.startEditByPosition({
-//            row: 0,
-//            column: 0
-//        });
+        var edit = this.getUserGrid().getPlugin('cellediting');
+        edit.cancelEdit();
+        edit.startEdit(user, 0);
     },
 
     deleteUser: function () {
@@ -97,7 +94,6 @@ Ext.define('AppExample.controller.Users', {
     }
 
 //    addFriend: function (selModel, selected) {
-//
 //        var query = new Object(),
 //            params = new Object(),
 //            selected_user = this.getUsers().getSelectionModel().getSelection()[0],
@@ -126,7 +122,6 @@ Ext.define('AppExample.controller.Users', {
 //    },// end addFriend
 
 //    unFriend: function (grid, rowIndex, colIndex) {
-//
 //        var query = new Object(),
 //            params = new Object(),
 //            related_users = this.getRelatedUsersStore(),
@@ -157,34 +152,4 @@ Ext.define('AppExample.controller.Users', {
 //            }
 //        });
 //    },// end unFriend
-
-//    typeChange: function (selModel, selected) {
-//        var check = this.getTypesStore().findExact('type_id', selected);
-//
-//        this.getUsers().down('#addType').setDisabled(check >= 0);
-//        this.getUsers().down('#deleteType').setDisabled(check < 0);
-//    },// end typeChange
-//
-//    addType: function () {
-//        var rec = new AM.model.Type({
-//            type: this.getUsers().down('#typeSelector').getRawValue()
-//        })
-//
-//        this.getTypesStore().add(rec);
-//        this.getTypesStore().sync();
-//        this.getUsers().down('#addType').setDisabled(true);
-//    },
-//
-//    deleteType: function () {
-//        var combo_value = this.getUsers().down('#typeSelector').getValue()
-//        var selection = this.getTypesStore().getById(combo_value);
-//
-//        if (selection) {
-//            this.getTypesStore().remove(selection);
-//        }
-//
-//        this.getTypesStore().sync();
-//        this.getUsersStore().load();
-//        this.getUsers().down('#addType').setDisabled(true);
-//    }
 });

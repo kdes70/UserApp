@@ -5,7 +5,10 @@ Ext.define('AppExample.view.Users', {
     stripeRows: true,
     title: 'All Users',
     frame: true,
-    plugins: ['cellediting'],
+    plugins: [{
+        ptype: 'cellediting',
+        pluginId: 'cellediting'
+    }],
     columns: [
         {
             header: 'Name',
