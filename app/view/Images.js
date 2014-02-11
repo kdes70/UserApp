@@ -4,6 +4,7 @@ Ext.define('AppExample.view.Images', {
     title: 'User Images',
     frame: true,
     layout: 'fit',
+
     items: [
         {
             xtype: 'dataview',
@@ -49,4 +50,4 @@ Ext.define('AppExample.view.Images', {
             ]
         }
     ]
-});
+}, function(){});

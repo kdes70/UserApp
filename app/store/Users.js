@@ -8,8 +8,9 @@ Ext.define('AppExample.store.Users', {
         load: function (store) {
             // load associations data
             store.each(function (user) {
-                typeStore = Ext.getStore('Types');
-                type = typeStore.getById(user.data.type_id);
+                var typeStore = Ext.getStore('Types'),
+                    type = typeStore.getById(user.get('type_id'))
+                ;
                 user.setType(type);
             })
         }
