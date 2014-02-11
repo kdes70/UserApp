@@ -1,9 +1,5 @@
 @charset "utf-8"; /* CSS Document */
 
-.thumb {
-    width: 90px;
-    height: 80px;
-}
 .thumb-wrap {
     float: left;
     margin: 4px;
@@ -16,18 +12,25 @@
     text-align: center;
     width: 90px;
 }
-.thumb-wrap img {
+.thumb {
+    width: 90px;
+    height: 80px;
+}
+.thumb img {
     width: 90px;
 }
-.x-item-selected {
-    background: #8db2e3;
-}
 
-.thumb-img{
+.thumb-wrap.xs span {
+    width: 80px;
+}
+.thumb-wrap.xs .thumb {
     width: 80px;
     height: 60px;
 }
-.image-node .x-tree-node-icon{
-    margin-bottom:1px;
-    height:15px;
+.thumb-wrap.xs .thumb img {
+    width: 80px;
+}
+
+.x-item-selected {
+    background: #8db2e3;
 }

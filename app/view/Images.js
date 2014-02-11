@@ -1,12 +1,26 @@
 Ext.define('AppExample.view.Images', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Ext.panel.Panel',
     alias: 'widget.images',
-    store: 'Images',
-    stripeRows: true,
     title: 'User Images',
     frame: true,
-    columns: [
+    layout: 'fit',
+    items: [
         {
+            xtype: 'dataview',
+            store: 'Images',
+            title: 'User Images',
+            multiSelect: true,
+            autoScroll: true,
+            frame: true,
+            emptyText: 'No images to display',
+            itemSelector: 'div.thumb-wrap',
+            tpl:
+                '<tpl for=".">' +
+                    '<div class="thumb-wrap xs">' +
+                        '<div class="thumb"><img src={src} /></div>' +
+                        '<span>{name}</span>' +
+                    '</div>' +
+                '</tpl>',
             header: 'Name',
             dataIndex: 'name',
             flex: 1,
@@ -36,32 +50,3 @@ Ext.define('AppExample.view.Images', {
         }
     ]
 });
-
-//Ext.define('AM.view.Images', {
-//    extend: 'Ext.DataView',
-//    activeRecord: null,
-//    alias: 'widget.images',
-//    store: 'RelatedImages',
-//    frame: true,
-//    multiSelect: true,
-//    autoScroll: true,
-//    emptyText: 'No images to display',
-//    itemSelector: 'div.thumb-wrap',
-//    tpl: ['<tpl for=".">',
-//        '<div class="thumb-wrap">',
-//        '<div class="thumb">',
-//        '<img src="public/images/store/thumbs/thumb_{image_src}" />',
-//        '</div>',
-//        '<span>{image_name}</span>',
-//        '</div>',
-//        '</tpl>'],
-//
-//    initComponent: function () {
-//        this.callParent(arguments);
-//    },
-//
-//    updateDetail: function (record) {
-//        this.activeRecord = record;
-//    }
-//
-//});

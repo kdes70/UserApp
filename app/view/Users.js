@@ -47,7 +47,7 @@ Ext.define('AppExample.view.Users', {
                 allowBlank: false,
                 lazyRender: true
             },
-            renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
+            renderer: function (value, metaData, record) {
                 return record.getType().data.alias;
             }
         }
@@ -101,4 +101,4 @@ Ext.define('AppExample.view.Users', {
             ]
         }
     ]
-});
+}, null);
