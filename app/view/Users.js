@@ -101,8 +101,8 @@ Ext.define('AppExample.view.Users', {
 //        {
 //            xtype: 'cfg',
 //        }
-    ],
-    initComponent: function () {
-        this.callParent(arguments);
-    }
+    ]
+//    initComponent: function () {
+//        this.callParent(arguments);
+//    }
 });

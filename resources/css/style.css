@@ -20,21 +20,7 @@ canvas {
     margin: auto;
     z-index: 10;
 }
-.icon-add {
-    background: url(../images/icons/add.png);
-}
-.icon-delete {
-    background: url(../images/icons/close.png);
-}
-.icon-sync {
-    background: url(../images/icons/sync.png);
-}
-.icon-store {
-    background: url(../images/icons/images_store.png);
-}
-.icon-link {
-    background: url(../images/icons/link.gif);
-}
+
 .DD-hover {
     background: #FFE08A;
 }
@@ -70,11 +56,12 @@ select {
     margin: 4px;
     margin-right: 0;
     padding: 5px;
-}.thumb-wrap span {
+}
+.thumb-wrap span {
     display: block;
     overflow: hidden;
     text-align: center;
-    width: 76px; // for ie to ensure that the text is centered
+    width: 76px;
 }
 .x-item-selected .thumb {
     background: #8db2e3;

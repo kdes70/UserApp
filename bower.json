@@ -11,7 +11,9 @@
     "ExtJs",
     "javascript",
     "tutorial",
-    "qunit"
+    "qunit",
+    "HTML5",
+    "Local Storage"
   ],
   "license": "MIT",
   "private": true,

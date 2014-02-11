@@ -3,5 +3,4 @@ Ext.define('AppExample.store.Types', {
     model: 'AppExample.model.Type',
     autoLoad: true,
     autosync: true
-
 });
