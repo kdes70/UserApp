@@ -1,12 +1,12 @@
 Ext.define('AppExample.controller.Types', {
     extend: 'Ext.app.Controller',
     stores: ['Types'],
-//    views: ['Users'],
-    refs: [{
-        ref: 'UserGrid',
-        selector: 'users'
-    }],
-    selected: null,
+    refs: [
+        {
+            ref: 'UserGrid',
+            selector: 'users'
+        }
+    ],
     init: function () {
         this.control({
             'users #typeSelector': {
@@ -20,14 +20,12 @@ Ext.define('AppExample.controller.Types', {
             }
         });
     },
-
     typeChange: function (selModel, selected) {
         var check = this.getTypesStore().findExact('type_id', selected);
 
         this.getUserGrid().down('#addType').setDisabled(check >= 0);
         this.getUserGrid().down('#deleteType').setDisabled(check < 0);
-    },// end typeChange
-
+    },
     addType: function () {
         var typesStore = this.getTypesStore();
         var userType = new AppExample.model.Type({
@@ -39,7 +37,6 @@ Ext.define('AppExample.controller.Types', {
 
         this.getUserGrid().down('#addType').setDisabled(true);
     },
-
     deleteType: function () {
         var combo_value = this.getUsers().down('#typeSelector').getValue()
         var selection = this.getTypesStore().getById(combo_value);

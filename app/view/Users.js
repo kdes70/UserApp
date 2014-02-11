@@ -5,10 +5,12 @@ Ext.define('AppExample.view.Users', {
     stripeRows: true,
     title: 'All Users',
     frame: true,
-    plugins: [{
-        ptype: 'cellediting',
-        pluginId: 'cellediting'
-    }],
+    plugins: [
+        {
+            ptype: 'cellediting',
+            pluginId: 'cellediting'
+        }
+    ],
     columns: [
         {
             header: 'Name',
@@ -45,7 +47,7 @@ Ext.define('AppExample.view.Users', {
                 allowBlank: false,
                 lazyRender: true
             },
-            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+            renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
                 return record.getType().data.alias;
             }
         }
@@ -66,11 +68,11 @@ Ext.define('AppExample.view.Users', {
                     disabled: true,
                     itemId: 'deleteUser',
                     iconCls: 'icon-delete'
-                }, '->',
+                },'->',
                 {
                     xtype: 'tbtext',
                     text: '<b>User Types</b>'
-                }, '|',
+                },'|',
                 {
                     xtype: 'combo',
                     store: 'Types',
@@ -98,11 +100,5 @@ Ext.define('AppExample.view.Users', {
                 }
             ]
         }
-//        {
-//            xtype: 'cfg',
-//        }
     ]
-//    initComponent: function () {
-//        this.callParent(arguments);
-//    }
 });

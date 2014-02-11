@@ -14,14 +14,14 @@ Ext.define('AppExample.view.Viewport', {
             xtype: 'users',
             collapsible: false,
             region: 'center',
-            margins: '5 0 0 0',
+            margins: '10 0 5 10',
             bodyPadding: 0
         },
         {
             title: 'Related',
             region: 'east',
             floatable: false,
-            margins: '5 0 0 0',
+            margins: '10 10 5 0',
             width: 200,
             layout: {
                 type: 'vbox',
