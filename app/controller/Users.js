@@ -25,6 +25,7 @@ Ext.define('AppExample.controller.Users', {
 
     selectUser: function (grid, record) {
         this.selected = record;
+        console.log(record);
         var delBtn = this.getUserGrid().down('#deleteUser');
         delBtn.setDisabled(!record);
     },

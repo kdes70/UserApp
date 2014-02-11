@@ -4,6 +4,7 @@ Ext.define('AppExample.store.Users', {
     autoLoad: true,
     autoSync: true,
     listeners: {
+        // todo: implement lazy-loading approach?
         load: function (store) {
             // load associations data
             store.each(function (user) {

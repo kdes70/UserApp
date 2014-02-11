@@ -25,6 +25,13 @@ Ext.define('AppExample.model.User', {
             foreignKey: 'type_id'
         }
     ],
+    hasMany: {
+        name: 'images',
+        instanceName: 'images',
+        model: 'AppExample.model.Image',
+        getterName: 'getImages',
+        setterName: 'setImages'
+    },
     proxy: {
         type: 'localstorage',
         id: 'users'
