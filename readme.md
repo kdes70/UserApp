@@ -1,6 +1,1 @@
-## installation
-
-Make sure you have bower installed
-
-copy extjs to the ext folder
-`bower install`
+Example of Ext Js MVC architecture

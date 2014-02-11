@@ -1,6 +1,6 @@
 Ext.define('AppExample.view.ImageStore', {
     extend: 'Ext.window.Window',
-    alias: 'widget.image.store',
+    alias: 'widget.image-store',
     title: 'Image Store',
     store: 'Images',
     width: 800,
@@ -19,8 +19,8 @@ Ext.define('AppExample.view.ImageStore', {
                 tpl: ['<tpl for=".">',
                     '<div class="thumb-wrap">',
                     '<div class="thumb">',
-                    '<img src="public/images/store/thumbs/thumb_{image_src}" />',
-                    '</div>', '<span>{image_name}</span>',
+                    '<img src={src} />',
+                    '</div>', '<span>{name}</span>',
                     '</div>',
                     '</tpl>'],
                 emptyText: 'No images to display',
@@ -30,9 +30,9 @@ Ext.define('AppExample.view.ImageStore', {
                 store: 'Images'
             }
         ],
-        dockedItems: [{
+        dockedItems: [
+            {
                 xtype: 'form',
-                itemId: 'UploadForm',
                 title: false,
                 buttonAlign: 'right',
                 labelWidth: 50,

@@ -6,6 +6,10 @@ Ext.define('AppExample.controller.Images', {
         {
             ref: 'ImageGrid',
             selector: 'images'
+        },
+        {
+            ref: 'ImageStore',
+            selector: 'image-store'
         }
     ],
     init: function () {
@@ -30,17 +34,17 @@ Ext.define('AppExample.controller.Images', {
 //            'image_store #delete_images': {
 //                click: this.deleteImage
 //            },
-//            'image_store filefield': {
-//                change: this.uploadImage
-//            },
+            'image-store filefield': {
+                change: this.uploadImage
+            },
 //            'image_store #UploadForm_reset': {
 //                click: this.resetForm
 //            }
         });
     },
     openStore: function () {
-        var view = Ext.widget('image.store');
-    }
+        var view = Ext.widget('image-store');
+    },
 //
 //    selectImages: function (btn, selected) {
 //        var user_selection = (this.getUsers().getSelectionModel().getSelection()[0] || null);
@@ -49,30 +53,24 @@ Ext.define('AppExample.controller.Images', {
 //        this.getImagestore().down('#assign_images').
 //            setDisabled((user_selection === null) || (selected.length === 0));
 //    }, // end selectImages
-//
-//    uploadImage: function () {
-//        var params = new Object(),
-//            form = this.getUploadform().getForm(),
-//            imageStore = this.getImagesStore(),
-//            selected_user = this.getUsers().getSelectionModel().getSelection()[0];
-//        if(selected_user){
-//            params.id = selected_user.data.user_id;}
-//
-//        if (form.isValid()) {
-//            form.submit({
-//                url: 'images/create',
-//                waitMsg: 'Uploading your photo...',
-//                success: function (form, action) {
-//                    Ext.example.msg('Success', action.result.message);
-//                    imageStore.load({params: params});
-//                },
-//                failure: function (form, action) {
-//                    console.log(action.result.message);
-//                    Ext.example.msg('Fail', action.result.message);
-//                }
-//            });
-//        }
-//    }, //end uploadImage
+
+    uploadImage: function (elm, src) {
+        var input = elm.extractFileInput();
+        var me = this;
+        if (input.files && input.files[0]) {
+            var file = input.files[0];
+            console.log(file);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var image = new AppExample.model.Image();
+                image.set('name', file.name);
+                image.set('src', e.target.result);
+                me.getImagesStore().add(image);
+                me.getImagesStore().sync();
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 //
 //    deleteImage: function () {
 //        var selection = this.getImagestore().down('dataview').getSelectionModel().getSelection();
