@@ -1,6 +1,6 @@
 Ext.application({
     name: 'AppExample',
-    stores: ['Types', 'Users'],
+//    stores: ['Types', 'Users', 'Images'],
     controllers: ['Users', 'Types', 'Images'],
     appFolder: 'app',
 

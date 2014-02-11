@@ -21,7 +21,7 @@ Ext.define('AppExample.view.Images', {
                 {
                     xtype: 'button',
                     text: 'Store',
-                    itemId: 'open_store',
+                    itemId: 'open-store',
                     iconCls: 'icon-store'
                 },
                 '->',
@@ -36,3 +36,32 @@ Ext.define('AppExample.view.Images', {
         }
     ]
 });
+
+//Ext.define('AM.view.Images', {
+//    extend: 'Ext.DataView',
+//    activeRecord: null,
+//    alias: 'widget.images',
+//    store: 'RelatedImages',
+//    frame: true,
+//    multiSelect: true,
+//    autoScroll: true,
+//    emptyText: 'No images to display',
+//    itemSelector: 'div.thumb-wrap',
+//    tpl: ['<tpl for=".">',
+//        '<div class="thumb-wrap">',
+//        '<div class="thumb">',
+//        '<img src="public/images/store/thumbs/thumb_{image_src}" />',
+//        '</div>',
+//        '<span>{image_name}</span>',
+//        '</div>',
+//        '</tpl>'],
+//
+//    initComponent: function () {
+//        this.callParent(arguments);
+//    },
+//
+//    updateDetail: function (record) {
+//        this.activeRecord = record;
+//    }
+//
+//});
