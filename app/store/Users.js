@@ -12,7 +12,7 @@ Ext.define('AppExample.store.Users', {
                     type = typeStore.getById(user.get('type_id'))
                 ;
                 user.setType(type);
-            })
+            });
         }
     }
 });

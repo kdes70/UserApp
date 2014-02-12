@@ -38,7 +38,7 @@ Ext.define('AppExample.controller.Types', {
         this.getUserGrid().down('#addType').setDisabled(true);
     },
     deleteType: function () {
-        var combo_value = this.getUsers().down('#typeSelector').getValue()
+        var combo_value = this.getUsers().down('#typeSelector').getValue();
         var selection = this.getTypesStore().getById(combo_value);
 
         if (selection) {

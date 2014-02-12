@@ -9,7 +9,11 @@ Ext.define('AppExample.controller.Images', {
         },
         {
             ref: 'ImageStore',
-            selector: 'image-store'
+            selector: 'image-store dataview'
+        },
+        {
+            ref: 'deleteBtn',
+            selector: 'image-store #delete'
         }
     ],
     init: function () {
@@ -17,11 +21,17 @@ Ext.define('AppExample.controller.Images', {
             'images #open-store': {
                 click: this.openStore
             },
+            'image-store dataview': {
+                selectionchange: this.selectImages
+            },
+            'image-store #delete': {
+                click: this.deleteImage
+            },
+            'image-store filefield': {
+                change: this.uploadImage
+            }
 //            '#assign_images': {
 //                click: this.assignImages
-//            },
-//            'image_store dataview': {
-//                selectionchange: this.selectImages
 //            },
 //            'images': {
 //                selectionchange: function (btn, selected) {
@@ -31,35 +41,22 @@ Ext.define('AppExample.controller.Images', {
 //            '#unassign_images': {
 //                click: this.unassignImages
 //            },
-//            'image_store #delete_images': {
-//                click: this.deleteImage
-//            },
-            'image-store filefield': {
-                change: this.uploadImage
-            },
-//            'image_store #UploadForm_reset': {
-//                click: this.resetForm
-//            }
         });
     },
-    openStore: function () {
-        var view = Ext.widget('image-store');
-    },
-//
-//    selectImages: function (btn, selected) {
-//        var user_selection = (this.getUsers().getSelectionModel().getSelection()[0] || null);
-//
-//        this.getImagestore().down('#delete_images').setDisabled(selected.length === 0);
-//        this.getImagestore().down('#assign_images').
-//            setDisabled((user_selection === null) || (selected.length === 0));
-//    }, // end selectImages
 
-    uploadImage: function (elm, src) {
+    openStore: function () {
+        Ext.widget('image-store');
+    },
+
+    selectImages: function (btn, selected) {
+        this.getDeleteBtn().setDisabled(selected.length === 0);
+    },
+
+    uploadImage: function (elm) {
         var input = elm.extractFileInput();
         var me = this;
         if (input.files && input.files[0]) {
             var file = input.files[0];
-            console.log(file);
             var reader = new FileReader();
             reader.onload = function(e) {
                 var image = new AppExample.model.Image();
@@ -70,16 +67,15 @@ Ext.define('AppExample.controller.Images', {
             };
             reader.readAsDataURL(file);
         }
+    },
+
+    deleteImage: function () {
+        var selection = this.getImageStore().getSelectionModel().getSelection();
+        if (selection) {
+            this.getImagesStore().remove(selection);
+        }
     }
-//
-//    deleteImage: function () {
-//        var selection = this.getImagestore().down('dataview').getSelectionModel().getSelection();
-//
-//        if (selection) {
-//            this.getImagesStore().remove(selection);
-//        }
-//    }, //end deleteImage
-//
+
 //    assignImages: function () {
 //
 //        var win = this.getImagestore(),
@@ -150,24 +146,3 @@ Ext.define('AppExample.controller.Images', {
 //        });
 //    },//end unassignImage
 });
-
-//Ext.define('AM.controller.Images', {
-//    extend: 'Ext.app.Controller',
-//    stores: ['Images', 'RelatedImages'],
-//    models: ['User', 'Image'],
-//    views: ['Users', 'Images', 'ImageStore'],
-//    emptyText: 'No users to display',
-//    refs: [{
-//        ref: 'users',
-//        selector: 'users'
-//    },{
-//        ref: 'imagestore',
-//        selector: 'image_store'
-//    },{
-//        ref: 'related_images',
-//        selector: '#related_images'
-//    },{
-//        ref: 'uploadform',
-//        selector: 'image_store #UploadForm'
-//    }],
-//

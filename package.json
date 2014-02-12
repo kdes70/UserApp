@@ -1,12 +1,5 @@
 {
     "name": "UserAppExample",
     "description": "UserAppExample",
-    "author": "Artem Puchenkin <apuchenkin@gmail.com>",
-
-    "undef": true,
-    "unused": true,
-    "globals": {
-        "Ext": false,
-        "AppExample": false
-    }
+    "author": "Artem Puchenkin <apuchenkin@gmail.com>"
 }

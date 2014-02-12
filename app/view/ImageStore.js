@@ -62,7 +62,7 @@ Ext.define('AppExample.view.ImageStore', {
                         xtype: 'button',
                         disabled: true,
                         text: 'delete selected Images',
-                        itemId: 'delete_images',
+                        itemId: 'delete',
                         iconCls: 'icon-delete'
                     },
                     '->',
