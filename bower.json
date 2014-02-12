@@ -25,6 +25,7 @@
     "tests"
   ],
   "dependencies": {
-    "qunit": "~1.14.0"
+    "qunit": "~1.14.0",
+    "deftjs": "0.9.1"
   }
 }

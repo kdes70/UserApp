@@ -15,11 +15,7 @@ Ext.define('AppExample.view.Images', {
             frame: true,
             emptyText: 'No images to display',
             itemSelector: 'div.thumb-wrap',
-            loader: {
-                url: 'resources/templates/image.tpl',
-                autoLoad: true,
-                renderer: AppExample.util.TemplateLoader.render
-            },
+            tpl: AppExample.util.TemplateLoader.getTemplate('image'),
             header: 'Name',
             dataIndex: 'name'
         }

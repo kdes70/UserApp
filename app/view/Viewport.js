@@ -22,7 +22,7 @@ Ext.define('AppExample.view.Viewport', {
             region: 'east',
             floatable: false,
             margins: '10 10 5 0',
-            width: 200,
+            width: '30%',
             layout: {
                 type: 'vbox',
                 align: 'stretch'

@@ -15,19 +15,13 @@ Ext.define('AppExample.view.ImageStore', {
         items: [
             {
                 xtype: 'dataview',
+                store: 'Images',
                 border: false,
-                tpl: '' +
-                '<tpl for=".">' +
-                    '<div class="thumb-wrap">' +
-                        '<div class="thumb"><img src={src} /></div>' +
-                        '<span>{name}</span>' +
-                    '</div>' +
-                '</tpl>',
                 emptyText: 'No images to display',
                 itemSelector: 'div.thumb-wrap',
                 multiSelect: true,
                 autoScroll: true,
-                store: 'Images'
+                tpl: AppExample.util.TemplateLoader.getTemplate('image')
             }
         ],
         dockedItems: [

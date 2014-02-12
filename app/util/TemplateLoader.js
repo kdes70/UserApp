@@ -1,15 +1,35 @@
 Ext.define('AppExample.util.TemplateLoader', {
     singleton : true,
+    config: {},
+    templates: [
+        {name: 'image', url: "resources/templates/image.tpl"}
+    ],
 
-    render: function(loader, response) {
-        var target = loader.getTarget();
-        var templateConfig = {};
+    constructor: function(config) {
+        config = config || {};
+        var loader = new Ext.ComponentLoader();
+        var me = this;
 
-        if ((target.templateConfig != null)) {
-            templateConfig = targetComponent.templateConfig;
-        }
+        Ext.Array.forEach(this.templates, function(item) {
+            console.log(item.name);
+            loader.load({
+                url: item.url,
+                renderer: function(loader, response) {
+                    var template =  new Ext.XTemplate(response.responseText);
+                    me.setTemplate(item.name, template);
+                    return true;
+                }
+            });
+        });
 
-        target.tpl = new Ext.XTemplate(response.responseText, templateConfig);
-        target.refresh();
+        return this;
+    },
+
+    setTemplate: function(name, template) {
+        this.config[name] = template;
+    },
+
+    getTemplate: function(name) {
+        return this.config[name] || '';
     }
 });

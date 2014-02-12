@@ -7,7 +7,7 @@ Ext.application({
     // automatically create an instance of AM.view.Viewport
     autoCreateViewport: true,
 
-    afterInit: function () {
-        Ext.tip.QuickTipManager.init();
+    init: function () {
+//        AppExample.util.TemplateLoader.init();
     }
 });
