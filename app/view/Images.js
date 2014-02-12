@@ -15,17 +15,13 @@ Ext.define('AppExample.view.Images', {
             frame: true,
             emptyText: 'No images to display',
             itemSelector: 'div.thumb-wrap',
-            tpl:
-                '<tpl for=".">' +
-                    '<div class="thumb-wrap xs">' +
-                        '<div class="thumb"><img src={src} /></div>' +
-                        '<span>{name}</span>' +
-                    '</div>' +
-                '</tpl>',
+            loader: {
+                url: 'resources/templates/image.tpl',
+                autoLoad: true,
+                renderer: AppExample.util.TemplateLoader.render
+            },
             header: 'Name',
-            dataIndex: 'name',
-            flex: 1,
-            field: {allowBlank: false}
+            dataIndex: 'name'
         }
     ],
     dockedItems: [
