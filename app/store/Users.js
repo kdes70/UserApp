@@ -3,6 +3,8 @@ Ext.define('AppExample.store.Users', {
     model: 'AppExample.model.User',
     autoLoad: true,
     autoSync: true,
+    activeUser: null,
+
     listeners: {
         // todo: implement lazy-loading approach?
         load: function (store) {
@@ -14,5 +16,21 @@ Ext.define('AppExample.store.Users', {
                 user.setType(type);
             });
         }
+    },
+
+    setActiveUser: function(user) {
+        this.activeUser = user;
+    },
+
+    getActiveUser: function() {
+        return this.activeUser;
+    },
+
+    removeUser: function(user) {
+        var userToRemove = user || this.activeUser;
+        if (userToRemove) {
+            this.remove(userToRemove);
+        }
     }
+
 });

@@ -53,7 +53,7 @@ Ext.define('AppExample.view.ImageStore', {
                 items: [
                     {
                         xtype: 'button',
-                        itemId: 'assign_images',
+                        itemId: 'assign',
                         text: 'assign selected Images',
                         iconCls: 'icon-link',
                         disabled: true

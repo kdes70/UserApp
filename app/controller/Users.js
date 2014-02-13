@@ -6,6 +6,10 @@ Ext.define('AppExample.controller.Users', {
         {
             ref: 'UserGrid',
             selector: 'users'
+        },
+        {
+            ref: 'UserImages',
+            selector: 'images dataview'
         }
     ],
     selected: null,
@@ -24,22 +28,24 @@ Ext.define('AppExample.controller.Users', {
     },
 
     selectUser: function (grid, record) {
-        this.selected = record;
-        var delBtn = this.getUserGrid().down('#deleteUser');
+        var delBtn = this.getUserGrid().down('#deleteUser'),
+            imageStore = record.images()
+        ;
+        this.getUsersStore().setActiveUser(record);
+        this.getUserImages().bindStore(imageStore);
         delBtn.setDisabled(!record);
     },
 
     addUser: function () {
-        var user = new AppExample.model.User();
+        var user = new AppExample.model.User(),
+            edit = this.getUserGrid().getPlugin('cellediting')
+        ;
         this.getUsersStore().add(user);
-        var edit = this.getUserGrid().getPlugin('cellediting');
         edit.cancelEdit();
         edit.startEdit(user, 0);
     },
 
     deleteUser: function () {
-        if (this.selected) {
-            this.getUsersStore().remove(this.selected);
-        }
+        this.getUsersStore().removeUser();
     }
 });

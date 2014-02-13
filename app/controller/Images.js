@@ -1,6 +1,6 @@
 Ext.define('AppExample.controller.Images', {
     extend: 'Ext.app.Controller',
-    stores: ['Images'],
+    stores: ['Images', 'Users'],
     views: ['Images', 'ImageStore'],
     refs: [
         {
@@ -14,6 +14,10 @@ Ext.define('AppExample.controller.Images', {
         {
             ref: 'deleteBtn',
             selector: 'image-store #delete'
+        },
+        {
+            ref: 'assignBtn',
+            selector: 'image-store #assign'
         }
     ],
     init: function () {
@@ -29,10 +33,10 @@ Ext.define('AppExample.controller.Images', {
             },
             'image-store filefield': {
                 change: this.uploadImage
+            },
+            'image-store #assign': {
+                click: this.assignImages
             }
-//            '#assign_images': {
-//                click: this.assignImages
-//            },
 //            'images': {
 //                selectionchange: function (btn, selected) {
 //                    this.getRelated_images().down('#unassign_images').setDisabled(selected.length === 0);
@@ -49,15 +53,22 @@ Ext.define('AppExample.controller.Images', {
     },
 
     selectImages: function (btn, selected) {
+        var userStore = this.getUsersStore(),
+            user = userStore.getActiveUser()
+        ;
+
         this.getDeleteBtn().setDisabled(selected.length === 0);
+        this.getAssignBtn().setDisabled(!(user && selected.length));
     },
 
     uploadImage: function (elm) {
-        var input = elm.extractFileInput();
-        var me = this;
+        var me = this,
+            input = elm.extractFileInput();
+
         if (input.files && input.files[0]) {
-            var file = input.files[0];
-            var reader = new FileReader();
+            var file = input.files[0],
+                reader = new FileReader();
+
             reader.onload = function(e) {
                 var image = new AppExample.model.Image();
                 image.set('name', file.name);
@@ -74,44 +85,17 @@ Ext.define('AppExample.controller.Images', {
         if (selection) {
             this.getImagesStore().remove(selection);
         }
+    },
+
+    assignImages: function () {
+        var userStore = this.getUsersStore(),
+            selection = this.getImageStore().getSelectionModel().getSelection(),
+            user = userStore.getActiveUser()
+        ;
+        user.images().add(selection);
+        user.images().sync();
     }
 
-//    assignImages: function () {
-//
-//        var win = this.getImagestore(),
-//            query = new Object(),
-//            params = new Object(),
-//            selected_images = new Array();
-//        selected_user = this.getUsers().getSelectionModel().getSelection()[0],
-//            selection = this.getImagestore().down('dataview').getSelectionModel().getSelection(),
-//            images = this.getImagesStore(),
-//            related_images = this.getRelatedImagesStore();
-//
-//        for (var id in selection) {
-//            selected_images[id] = selection[id].data.image_id;
-//        }
-//
-//        query.id = selected_user.data.user_id;
-//        query.images = selected_images;
-//        params.id = selected_user.data.user_id;
-//
-//        Ext.Ajax.request({
-//            url: 'images/relate',
-//            params: {
-//                query: Ext.JSON.encode(query)
-//            },
-//            success: function (response) {
-//                Ext.example.msg('Success', response.responseText);
-//                images.load({params: params});
-//                related_images.load({params: params});
-//                win.close();
-//            },
-//            failure: function(response) {
-//                Ext.example.msg('Failure', response.responseText);
-//            }
-//        });
-//    },//end assignImage
-//
 //    unassignImages: function () {
 //
 //        var query = {},

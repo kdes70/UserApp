@@ -6,8 +6,9 @@ Ext.define('AppExample.util.TemplateLoader', {
     ],
 
     constructor: function() {
-        var loader = new Ext.ComponentLoader();
-        var me = this;
+        var me = this,
+            loader = new Ext.ComponentLoader()
+        ;
 
         Ext.Array.forEach(this.templates, function(item) {
             loader.load({

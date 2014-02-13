@@ -8,7 +8,7 @@ Ext.define('AppExample.view.Images', {
     items: [
         {
             xtype: 'dataview',
-            store: 'Images',
+//            store: 'Images',
             title: 'User Images',
             multiSelect: true,
             autoScroll: true,
